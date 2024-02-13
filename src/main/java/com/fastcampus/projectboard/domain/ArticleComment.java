@@ -19,6 +19,7 @@ import java.util.Objects;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 })
+@EntityListeners(EntityListeners.class)
 @Entity
 public class ArticleComment {
 
