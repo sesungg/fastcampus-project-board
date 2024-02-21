@@ -14,6 +14,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
+
+/**
+ * 공통필드
+ */
 @Getter
 @ToString
 @EntityListeners(AuditingEntityListener.class)
