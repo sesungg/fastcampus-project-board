@@ -1,5 +1,5 @@
 -- 테스트 계정
-insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, moditied_by) values
+insert into user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by) values
 ('ssg', '1234qwer!@#$', 'Ssg', 'sesungg@gmail.com', 'I am Ssg', now(), 'ssg', now(), 'ssg');
 
 insert into article (title, content, hashtag, created_by, modified_by, created_at, modified_at) values ('Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam.', 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.', 'Khaki', 'Parke', 'Chelsie', '2023-03-06 18:13:09', '2021-04-08 03:25:51')
