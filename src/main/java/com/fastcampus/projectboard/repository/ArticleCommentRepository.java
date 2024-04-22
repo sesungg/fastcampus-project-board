@@ -29,4 +29,6 @@ public interface ArticleCommentRepository extends
         // 대소문자 구분을 하지 않으며 like 검색
         bindings.bind(root.createdBy).first(StringExpression::containsIgnoreCase);
     }
+
+    Object findByArticle_Id(Long articleId);
 }
