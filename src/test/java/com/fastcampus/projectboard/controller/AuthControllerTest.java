@@ -10,7 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @DisplayName("View 컨트롤러 - 인증")
 @Import(SecurityConfig.class)
@@ -19,14 +20,14 @@ public class AuthControllerTest {
 
     private final MockMvc mvc;
 
-    // 테스트 패키지에 있을 경우 autowired를 필수로 명시해야 한다.
     public AuthControllerTest(@Autowired MockMvc mvc) {
         this.mvc = mvc;
     }
 
+
     @DisplayName("[view][GET] 로그인 페이지 - 정상 호출")
     @Test
-    public void givenNothing_whenTryingToLogin_thenReturnsLoginView() throws Exception {
+    public void givenNothing_whenTryingToLogIn_thenReturnsLogInView() throws Exception {
         // Given
 
         // When & Then
@@ -34,4 +35,5 @@ public class AuthControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML));
     }
+
 }

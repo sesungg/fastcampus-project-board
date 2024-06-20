@@ -14,16 +14,16 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @DisplayName("View 컨트롤러 - 게시글")
-@WebMvcTest(ArticleController.class)
 @Import(SecurityConfig.class)
+@WebMvcTest(ArticleController.class)
 class ArticleControllerTest {
 
     private final MockMvc mvc;
 
-    // 테스트 패키지에 있을 경우 autowired를 필수로 명시해야 한다.
     public ArticleControllerTest(@Autowired MockMvc mvc) {
         this.mvc = mvc;
     }
+
 
     @DisplayName("[view][GET] 게시글 리스트 (게시판) 페이지 - 정상 호출")
     @Test
@@ -72,9 +72,10 @@ class ArticleControllerTest {
         // Given
 
         // When & Then
-        mvc.perform(get("/articles/search=hashtag"))
+        mvc.perform(get("/articles/search-hashtag"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
-                .andExpect(model().attributeExists("articles/hashtag"));
+                .andExpect(model().attributeExists("articles/search-hashtag"));
     }
+
 }

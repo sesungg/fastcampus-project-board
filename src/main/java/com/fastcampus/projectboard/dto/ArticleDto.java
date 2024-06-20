@@ -4,9 +4,6 @@ import com.fastcampus.projectboard.domain.Article;
 
 import java.time.LocalDateTime;
 
-/**
- * DTO for {@link com.fastcampus.projectboard.domain.Article}
- */
 public record ArticleDto(
         Long id,
         UserAccountDto userAccountDto,

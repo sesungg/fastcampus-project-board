@@ -17,8 +17,7 @@ class MainControllerTest {
 
     private final MockMvc mvc;
 
-    @Autowired
-    public MainControllerTest(MockMvc mvc) {
+    public MainControllerTest(@Autowired MockMvc mvc) {
         this.mvc = mvc;
     }
 
@@ -33,4 +32,5 @@ class MainControllerTest {
                 .andExpect(forwardedUrl("/articles"))
                 .andDo(MockMvcResultHandlers.print());
     }
+
 }

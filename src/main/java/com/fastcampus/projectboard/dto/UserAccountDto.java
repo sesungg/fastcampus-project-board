@@ -2,12 +2,8 @@ package com.fastcampus.projectboard.dto;
 
 import com.fastcampus.projectboard.domain.UserAccount;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
-/**
- * DTO for {@link com.fastcampus.projectboard.domain.UserAccount}
- */
 public record UserAccountDto(
         Long id,
         String userId,
@@ -19,7 +15,7 @@ public record UserAccountDto(
         String createdBy,
         LocalDateTime modifiedAt,
         String modifiedBy
-) implements Serializable {
+) {
     public static UserAccountDto of(Long id, String userId, String userPassword, String email, String nickname, String memo, LocalDateTime createdAt, String createdBy, LocalDateTime modifiedAt, String modifiedBy) {
         return new UserAccountDto(id, userId, userPassword, email, nickname, memo, createdAt, createdBy, modifiedAt, modifiedBy);
     }
@@ -29,7 +25,7 @@ public record UserAccountDto(
                 entity.getId(),
                 entity.getUserId(),
                 entity.getUserPassword(),
-                entity.getUserPassword(),
+                entity.getEmail(),
                 entity.getNickname(),
                 entity.getMemo(),
                 entity.getCreatedAt(),
@@ -48,4 +44,5 @@ public record UserAccountDto(
                 memo
         );
     }
+
 }

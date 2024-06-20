@@ -27,6 +27,7 @@ public class DataRestTest {
         this.mvc = mvc;
     }
 
+
     @DisplayName("[api] 게시글 리스트 조회")
     @Test
     void givenNothing_whenRequestingArticles_thenReturnsArticlesJsonResponse() throws Exception {
@@ -40,7 +41,7 @@ public class DataRestTest {
 
     @DisplayName("[api] 게시글 단건 조회")
     @Test
-    void givenNothing_whenRequestingArticles_thenReturnsArticleJsonResponse() throws Exception {
+    void givenNothing_whenRequestingArticle_thenReturnsArticleJsonResponse() throws Exception {
         // Given
 
         // When & Then
@@ -82,7 +83,7 @@ public class DataRestTest {
                 .andExpect(content().contentType(MediaType.valueOf("application/hal+json")));
     }
 
-    @DisplayName("[api] 회원 관련 API는 일체 제공하지 않는다.")
+    @DisplayName("[api] 회원 관련 API 는 일체 제공하지 않는다.")
     @Test
     void givenNothing_whenRequestingUserAccounts_thenThrowsException() throws Exception {
         // Given
@@ -94,6 +95,6 @@ public class DataRestTest {
         mvc.perform(patch("/api/userAccounts")).andExpect(status().isNotFound());
         mvc.perform(delete("/api/userAccounts")).andExpect(status().isNotFound());
         mvc.perform(head("/api/userAccounts")).andExpect(status().isNotFound());
-
     }
+
 }

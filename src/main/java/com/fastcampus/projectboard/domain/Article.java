@@ -24,22 +24,12 @@ public class Article extends AuditingFields {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter
-    @ManyToOne(optional = false)
-    private UserAccount userAccount;
+    @Setter @ManyToOne(optional = false) private UserAccount userAccount; // 유저 정보 (ID)
 
-    /** 제목 */
-    @Setter
-    @Column(nullable = false)
-    private String title;
-    /** 본문 */
-    @Setter
-    @Column(nullable = false, length = 10000)
-    private String content;
+    @Setter @Column(nullable = false) private String title; // 제목
+    @Setter @Column(nullable = false, length = 10000) private String content; // 본문
 
-    /** 해시태그 */
-    @Setter
-    private String hashtag;
+    @Setter private String hashtag; // 해시태그
 
     @ToString.Exclude
     @OrderBy("createdAt DESC")
@@ -71,4 +61,5 @@ public class Article extends AuditingFields {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }

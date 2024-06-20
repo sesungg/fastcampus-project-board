@@ -1,14 +1,14 @@
 package com.fastcampus.projectboard.domain;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import jakarta.persistence.*;
 import java.util.Objects;
 
 @Getter
-@ToString(callSuper = true) // AuditingFields 까지 ToString 하는 설정(callSuper = true)
+@ToString(callSuper = true)
 @Table(indexes = {
         @Index(columnList = "content"),
         @Index(columnList = "createdAt"),
@@ -21,24 +21,17 @@ public class ArticleComment extends AuditingFields {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter
-    @ManyToOne(optional = false) // not null
-    private Article article;
+    @Setter @ManyToOne(optional = false) private Article article; // 게시글 (ID)
+    @Setter @ManyToOne(optional = false) private UserAccount userAccount; // 유저 정보 (ID)
 
-    @Setter
-    @ManyToOne(optional = false)
-    private UserAccount userAccount;
+    @Setter @Column(nullable = false, length = 500) private String content; // 본문
 
-    /** 본문 */
-    @Setter
-    @Column(nullable = false, length = 500)
-    private String content;
 
     protected ArticleComment() {}
 
     private ArticleComment(Article article, UserAccount userAccount, String content) {
-        this.userAccount = userAccount;
         this.article = article;
+        this.userAccount = userAccount;
         this.content = content;
     }
 
@@ -57,4 +50,5 @@ public class ArticleComment extends AuditingFields {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }

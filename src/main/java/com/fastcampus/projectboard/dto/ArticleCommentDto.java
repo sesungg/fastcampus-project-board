@@ -5,9 +5,6 @@ import com.fastcampus.projectboard.domain.ArticleComment;
 
 import java.time.LocalDateTime;
 
-/**
- * DTO for {@link com.fastcampus.projectboard.domain.ArticleComment}
- */
 public record ArticleCommentDto(
         Long id,
         Long articleId,

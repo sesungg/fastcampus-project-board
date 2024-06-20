@@ -1,10 +1,10 @@
 package com.fastcampus.projectboard.domain;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import jakarta.persistence.*;
 import java.util.Objects;
 
 @Getter
@@ -13,32 +13,21 @@ import java.util.Objects;
         @Index(columnList = "userId"),
         @Index(columnList = "email", unique = true),
         @Index(columnList = "createdAt"),
-        @Index(columnList = "createdBy"),
+        @Index(columnList = "createdBy")
 })
 @Entity
-public class UserAccount extends AuditingFields{
+public class UserAccount extends AuditingFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter
-    @Column(nullable = false, length = 50)
-    private String userId;
+    @Setter @Column(nullable = false, length = 50) private String userId;
+    @Setter @Column(nullable = false) private String userPassword;
 
-    @Setter
-    @Column(nullable = false)
-    private String userPassword;
+    @Setter @Column(length = 100) private String email;
+    @Setter @Column(length = 100) private String nickname;
+    @Setter private String memo;
 
-    @Setter
-    @Column(length = 100)
-    private String email;
-
-    @Setter
-    @Column(length = 100)
-    private String nickname;
-
-    @Setter
-    private String memo;
 
     protected UserAccount() {}
 
@@ -57,12 +46,13 @@ public class UserAccount extends AuditingFields{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof UserAccount that)) return false;
-        return id != null && id.equals(that.id);
+        if (!(o instanceof UserAccount userAccount)) return false;
+        return id != null && id.equals(userAccount.id);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
